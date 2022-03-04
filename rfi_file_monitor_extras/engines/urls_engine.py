@@ -5,10 +5,11 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib
 
-from ..engine import Engine, EngineThread
-from ..file import URL, FileStatus
-from ..utils.decorators import exported_filetype, with_pango_docs
-from ..utils.exceptions import NotYetRunning
+from rfi_file_monitor.engine import Engine, EngineThread
+from rfi_file_monitor.file import FileStatus
+from ..files.url import URL
+from rfi_file_monitor.utils.decorators import exported_filetype, with_pango_docs
+from rfi_file_monitor.utils.exceptions import NotYetRunning
 
 import logging
 from urllib.parse import urlparse, unquote_plus

@@ -3,12 +3,12 @@ import requests
 # pylint: disable=import-error
 from requests.packages.urllib3.util.retry import Retry
 
-from rfi-file-monitor.file import URL
-from rfi-file-monitor.queue_manager import QueueManager
-from rfi-file-monitor.operations.s3_downloader import S3DownloaderOperation
-from rfi-file-monitor.utils import get_file_creation_timestamp, TimeoutHTTPAdapter
-from rfi-file-monitor.utils.decorators import supported_filetypes, with_pango_docs
-from rfi-file-monitor.utils.exceptions import SkippedOperation
+from ..files.url import URL
+from rfi_file_monitor.queue_manager import QueueManager
+from rfi_file_monitor.operations.s3_downloader import S3DownloaderOperation
+from rfi_file_monitor.utils import get_file_creation_timestamp, TimeoutHTTPAdapter
+from rfi_file_monitor.utils.decorators import supported_filetypes, with_pango_docs
+from rfi_file_monitor.utils.exceptions import SkippedOperation
 
 import logging
 import datetime
