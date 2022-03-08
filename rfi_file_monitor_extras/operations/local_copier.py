@@ -106,7 +106,7 @@ class LocalCopierOperation(Operation):
 
         # destination directory cannot be monitored directory!!
 
-        from ..engines.file_watchdog_engine import FileWatchdogEngine
+        from rfi_file_monitor.engines.file_watchdog_engine import FileWatchdogEngine
 
         if isinstance(self.appwindow.active_engine, FileWatchdogEngine):
 
