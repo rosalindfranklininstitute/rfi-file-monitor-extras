@@ -71,16 +71,12 @@ class UrlDownloaderOperation(S3DownloaderOperation):
             try:
                 file_size = destination.stat().st_size
                 if url_size == file_size:
-                    url_time = parsedate(
-                        response.headers["Last-Modified"]
-                    ).astimezone()
+                    url_time = parsedate(response.headers["Last-Modified"]).astimezone()
                     file_time = datetime.datetime.fromtimestamp(
                         get_file_creation_timestamp(destination)
                     ).astimezone()
                     if url_time < file_time:
-                        raise SkippedOperation(
-                            "File has been downloaded already"
-                        )
+                        raise SkippedOperation("File has been downloaded already")
             except SkippedOperation:
                 raise
             except Exception:

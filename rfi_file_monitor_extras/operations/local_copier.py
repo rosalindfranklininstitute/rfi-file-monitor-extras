@@ -120,12 +120,8 @@ class LocalCopierOperation(Operation):
             # when using recursive monitoring, the destination directory cannot be a subdirectory of the monitored directory
             if self.appwindow.active_engine.params.monitor_recursively:
                 try:
-                    Path(
-                        self.params.destination_directory
-                    ).resolve().relative_to(
-                        Path(
-                            self.appwindow.active_engine.params.monitored_directory
-                        )
+                    Path(self.params.destination_directory).resolve().relative_to(
+                        Path(self.appwindow.active_engine.params.monitored_directory)
                     )
                 except ValueError:
                     pass
@@ -161,9 +157,7 @@ class LocalCopierOperation(Operation):
             os.unlink(tmpfile)
 
     def _attach_metadata(self, file: File, destination_file: Path):
-        file.operation_metadata[self.index] = {
-            "local copy path": destination_file
-        }
+        file.operation_metadata[self.index] = {"local copy path": destination_file}
 
     @add_directory_support
     def run(self, file: File):
@@ -222,6 +216,4 @@ class LocalCopyProgressPercentage:
         percentage = (current_num_bytes / total_num_bytes) * 100
         if int(percentage) > self._last_percentage:
             self._last_percentage = int(percentage)
-            self._file.update_progressbar(
-                self._operation.index, self._last_percentage
-            )
+            self._file.update_progressbar(self._operation.index, self._last_percentage)

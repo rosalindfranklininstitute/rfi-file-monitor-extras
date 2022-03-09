@@ -18,9 +18,7 @@ from time import time
 
 logger = logging.getLogger(__name__)
 
-ERROR_MSG = (
-    "Ensure that the selected file contains valid http and/or https URLs"
-)
+ERROR_MSG = "Ensure that the selected file contains valid http and/or https URLs"
 
 
 @with_pango_docs(filename="urls_engine.pango")
@@ -89,9 +87,7 @@ class URLsEngineThread(EngineThread):
             )
 
             if len(lines) == 0:
-                raise Exception(
-                    f"{self.params.file_with_urls} contains no usable URLs"
-                )
+                raise Exception(f"{self.params.file_with_urls} contains no usable URLs")
 
             # parse URLs
             msg = []
@@ -100,14 +96,10 @@ class URLsEngineThread(EngineThread):
                 parsed = urlparse(line)
 
                 if parsed.scheme not in ("http", "https"):
-                    msg.append(
-                        f"{line}: only http and https protocols are supported"
-                    )
+                    msg.append(f"{line}: only http and https protocols are supported")
                     continue
 
-                if not parsed.path or not (
-                    path := unquote_plus(parsed.path[1:])
-                ):
+                if not parsed.path or not (path := unquote_plus(parsed.path[1:])):
                     msg.append(f"{line}: URL must contain a path")
                     continue
 

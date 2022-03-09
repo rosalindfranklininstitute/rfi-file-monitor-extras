@@ -5,6 +5,7 @@ from gi.repository import Gtk, GLib, Gio
 from rfi_file_monitor.file import File, FileStatus
 from pathlib import PurePath
 
+
 class URL(File):
     def __init__(
         self,
